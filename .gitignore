@@ -1,6 +1,2 @@
-*.out
-tree-sitter
-tree-sitter-svelte
-*.tar.gz
 zig-cache
-
+.gyro
