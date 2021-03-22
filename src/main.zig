@@ -1,4 +1,4 @@
-const TS = @import("./api.zig");
+const TS = @import("./lib.zig");
 const std = @import("std");
 
 const TSParser = TS.TSParser;

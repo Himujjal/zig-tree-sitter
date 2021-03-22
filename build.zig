@@ -9,7 +9,7 @@ pub fn build(b: *std.build.Builder) !void {
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
 
-    const lib = b.addStaticLibrary("zig-tree-sitter", "src/main.zig");
+    const lib = b.addStaticLibrary("zig-tree-sitter", "src/lib.zig");
     lib.setBuildMode(mode);
 
     const path = try download.tar.gz(b.allocator, b.cache_root, URL, .{ .name = "tree-sitter" });
