@@ -1,2 +1,10 @@
-build_deps:
-  build-tools/download: ^1.0.1
+pkgs:
+  zig-tree-sitter:
+    version: 0.0.1
+    root: src/lib.zig
+
+  ZigTreeSitterBuilder:
+    version: 0.0.1
+    root: src/builder.zig
+    deps:
+      build-tools/download: ^1.0.1
