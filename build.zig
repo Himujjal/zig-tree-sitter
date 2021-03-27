@@ -9,7 +9,6 @@ fn prepareTS(b: *std.build.Builder, lib: *std.build.LibExeObjStep) !void {
 
     const join = std.fs.path.join;
     const clibpath = try join(b.allocator, &[_][]const u8{ path, "lib", "src", "lib.c" });
-    std.debug.print("{s}\n", .{clibpath});
 
     lib.linkLibC();
     lib.addCSourceFile(clibpath, &[_][]const u8{});

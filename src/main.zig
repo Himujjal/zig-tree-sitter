@@ -15,16 +15,17 @@ pub extern fn tree_sitter_svelte() ?*TSLanguage;
 pub extern fn free(__ptr: ?*c_void) void;
 
 pub fn main() !void {
-    var parser: ?*TSParser = ts_parser_new();
+    const SAMPLE_CODE = "<div>hello</div>";   
+
+    var parser: ?*TS.TSParser = ts_parser_new();
     defer TS.ts_parser_delete(parser);
 
-    var res: bool = ts_parser_set_language(parser, tree_sitter_svelte());
-    var source_code = "<div>hello</div>";
-    var tree: ?*TSTree = ts_parser_parse_string(parser, null, source_code, @bitCast(u32, @truncate(c_uint, source_code.len)));
+    var res: bool = TS.ts_parser_set_language(parser, tree_sitter_svelte());
+    var tree: ?*TS.TSTree = TS.ts_parser_parse_string(parser, null, SAMPLE_CODE, SAMPLE_CODE.len);
     defer TS.ts_tree_delete(tree);
 
-    var root_node: TSNode = ts_tree_root_node(tree);
-    var string: [*:0]u8 = ts_node_string(root_node);
+    var root_node: TSNode = TS.ts_tree_root_node(tree);
+    var string: [*:0]u8 = TS.ts_node_string(root_node);
     defer free(@ptrCast(?*c_void, string));
 
     const stdout = std.io.getStdOut().writer();
