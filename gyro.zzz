@@ -2,6 +2,9 @@ pkgs:
   zig-tree-sitter:
     version: 0.0.1
     root: src/main.zig
+  zig-tree-sitter-builder:
+    version: 0.0.1
+    root: src/builder.zig
 
 build_deps:
   build-tools/download: ^1.0.1
